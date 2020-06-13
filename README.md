@@ -8,7 +8,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 3. Go to `./Backend`, run `Python3 api.py` to start the back end.
 
-4. You could also open http://13.57.28.139:5000/ to view the deployed web page. 
+## How to run the Deployed Project
+
+4. Run `npm run build`, then in your terminal run `Python3 start.py` to start the front end and back end deployment APP at the same time.
+
+5. You could also open http://13.57.28.139:5000/ to view the deployed web page. 
 (Note: might need to inform me in advance to launch my server.)
 
 ## Available Scripts
