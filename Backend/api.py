@@ -1,9 +1,8 @@
 import flask
 from flask import request
 from flask_cors import CORS
-from flask import render_template
-import os
-from main import SearchExecution,QueryExecution,Rate
+from Backend.main import SearchExecution, QueryExecution, Rate
+from gevent import pywsgi
 
 server = flask.Flask(__name__)
 CORS(server)
@@ -47,5 +46,8 @@ if __name__ == '__main__':
     host = '0.0.0.0'   # 'Localhost'
     port = 8000
     print('run server...')
-    server.run(debug=True, port=port, host=host)
+    deployed_server = pywsgi.WSGIServer((host, port), server)
+    deployed_server.serve_forever()
+
+    #server.run(debug=True, port=port, host=host)
 
