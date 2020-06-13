@@ -1,7 +1,8 @@
 import flask
 from flask import request
 from flask_cors import CORS
-
+from flask import render_template
+import os
 from main import SearchExecution,QueryExecution,Rate
 
 server = flask.Flask(__name__)
