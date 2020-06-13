@@ -1,7 +1,7 @@
 import flask
 from flask import request
 from flask_cors import CORS
-from Backend.main import SearchExecution, QueryExecution, Rate
+from main import SearchExecution, QueryExecution, Rate
 from gevent import pywsgi
 
 server = flask.Flask(__name__)
