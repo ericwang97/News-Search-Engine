@@ -79,7 +79,7 @@ if __name__ == "__main__":
     run_schedule = True
 
     if run_schedule:
-        schedule.every(0.5).minutes.do(main)
+        schedule.every(0.2).minutes.do(main)
         #schedule.every().hour.do(main)
         while True:
             schedule.run_pending()
