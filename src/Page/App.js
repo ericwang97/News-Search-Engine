@@ -240,6 +240,19 @@ class App extends React.Component {
                 </Select>
             );
         }
+        else if (this.state.database === "tweet") {
+            selectTable.push(
+                <Select
+                    name="table"
+                    defaultValue=""
+                    style={{ width: 160 }}
+                    onChange={this.handleTableChange}
+                    value={this.state.table}>
+                    <Option value="raw_news">Tweet</Option>
+                    <Option value="">All tables</Option>
+                </Select>
+            );
+        }
 
         let returnResult = [];
         if (this.state.loading === true) {

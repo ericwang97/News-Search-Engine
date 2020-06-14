@@ -46,7 +46,11 @@ def GetTextualAttributes(connect,databaseNameList):
     textualAttributesListDict = {}
     for databaseName in databaseNameList:
         cursor = connect.cursor()
-        if databaseName == 'sakila':
+        if databaseName == 'news':
+            sqltext = 'SELECT TABLE_NAME,COLUMN_NAME FROM information_schema.COLUMNS ' \
+                      'WHERE TABLE_SCHEMA = "{}" AND (DATA_TYPE = "datetime" ' \
+                      'OR DATA_TYPE = "varchar" OR DATA_TYPE = "longtext" OR DATA_TYPE = "mediumtext");'.format(databaseName)
+        elif databaseName == 'sakila':
             sqltext = 'SELECT TABLE_NAME,COLUMN_NAME FROM information_schema.COLUMNS ' \
                       'WHERE TABLE_SCHEMA = "{}" AND (DATA_TYPE = "char" ' \
                       'OR DATA_TYPE ="enum" OR DATA_TYPE = "varchar" OR DATA_TYPE = "text"' \

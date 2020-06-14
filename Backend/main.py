@@ -39,12 +39,15 @@ def SearchExecution(databaseName, tableList, input):
     searchWholeData = True
     stopWords = True
 
+    sortDict = {}
     if databaseName == 'world':
         sortDict = {'city': 'Population', 'country': 'Population', 'countrylanguage': 'Percentage'}
     elif databaseName == 'sakila':
         sortDict = {'film': 'rental_rate'}
     elif databaseName == 'customers_order':
         sortDict = {'customers': 'creditLimit', 'payments': 'amount', 'products': 'quantityInStock'}
+    elif databaseName == 'news':
+        sortDict = {'tweet': 'favorite_count'}
 
     try:
         connect = mysql.connector.connect(
@@ -59,14 +62,14 @@ def SearchExecution(databaseName, tableList, input):
         print('You should connect to MySQL first!')
         # return CheckStatus('mysql connection failed')
 
-    url = firebaseURL + databaseName + '.json'
-    urlNode = firebaseURL + databaseName + 'Node.json'
-    urlAllDataNode = firebaseURL + databaseName + 'AllDataNode.json'
-
+    # url = firebaseURL + databaseName + '.json'
+    # urlNode = firebaseURL + databaseName + 'Node.json'
+    # urlAllDataNode = firebaseURL + databaseName + 'AllDataNode.json'
+    #
     # if requests.get(url).status_code != 200 or requests.get(urlNode).status_code != 200:
-    #    print("Connection Failed. Please connect your Firebase first!")
-    # return CheckStatus('firebase connection failed')
-
+    #     print("Connection Failed. Please connect your Firebase first!")
+    #     return CheckStatus('firebase connection failed')
+    #
     # else:
     #    if requests.get(url).json() == None or requests.get(urlNode).json() == None or requests.get(urlAllDataNode).json() == None:
     #        print("Index file doesn't exist, Initializing will take a while..")

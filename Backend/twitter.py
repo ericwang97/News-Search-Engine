@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from TwitterAPI import TwitterAPI
 from TwitterAPI import TwitterPager
-from tqdm import tqdm
+
 import pandas as pd
 from re import findall
 import pytz
@@ -10,9 +10,6 @@ from datetime import datetime
 import time
 from textrank4zh import TextRank4Keyword, TextRank4Sentence
 
-import sqlalchemy
-import mysql.connector
-import schedule
 
 def getTime(string):
     # weekday = string[0:3]
@@ -72,7 +69,7 @@ def searchTweet(data_list, topic, total_num, page_length, result_type, language,
                                                  'lang': language})
 
     data = {}
-    for i, item in tqdm(enumerate(result.get_iterator())):
+    for i, item in enumerate(result.get_iterator()):
         try:
             if 'text' in item:
                 time = getTime(item['created_at'])
@@ -108,13 +105,13 @@ def searchTweet(data_list, topic, total_num, page_length, result_type, language,
     return data
 
 
-def main(connect, data_list, topic, total_num, result_type, language, keywords_num, abstract_num):
+def getTweet(data_list, topic, total_num, result_type, language, keywords_num, abstract_num):
     consumerKey = "lvf9g60mxvkheIQgZXJXbO8VS"
     consumerSecret = "d0t1A5MnCyNhWtmKeYc0y2xnNDQUAGsAmWKvmGwzyCmKxDb0Lf"
     accessToken = "1674933235-7En18Na7MqbUmSzVv45cJgcy0jIVHVHbcAQstJ0"
     accessTokenSecret = "cKRUu9se5PxKuzaCkTje2gUE5Vx0AIlq9JzP2l98dppEz"
 
-    print('------------------ Topic: {} ---------------------'.format(topic))
+    #print('------------------ Topic: {} ---------------------'.format(topic))
 
     data = searchTweet(data_list, topic=topic, total_num=total_num, result_type=result_type, language=language,
                        page_length=20, keywords_num=keywords_num, abstract_num=abstract_num,
@@ -127,62 +124,7 @@ def main(connect, data_list, topic, total_num, result_type, language, keywords_n
     dataDF['scan_time'] = time.asctime(time.localtime(time.time()))
 
     #dataDF.to_csv('twitter.csv')
-    dataDF.to_sql(name='raw_news', con=connect, if_exists='append', index=False,
-                  dtype={'user_name': sqlalchemy.types.VARCHAR(45),
-                         'created_time': sqlalchemy.types.DATETIME,
-                         'favorite_count': sqlalchemy.types.INT,
-                         'keywords': sqlalchemy.types.TEXT,
-                         'url': sqlalchemy.types.VARCHAR(45),
-                         'text': sqlalchemy.types.TEXT,
-                         'topic': sqlalchemy.types.VARCHAR(45),
-                         'scan_time': sqlalchemy.types.VARCHAR(45)})
 
-def getExistedData():
-    connect = mysql.connector.connect(
-        host='127.0.0.1',
-        user='inf551',
-        passwd='inf551',
-        port=3306,
-        charset='utf8',
-        use_unicode=True)
+    return dataDF
 
-    source_urlselect = '''select user_name, created_time from tweet.raw_news'''
-    data_list = []
-    cursor = connect.cursor()
-    cursor.execute(source_urlselect)
-    for r in cursor:
-        name = r[0]
-        time = r[1].strftime('%H:%M:%S %b %d %Y')
-        data_list.append((name,time))
-    cursor.close()
-    connect.close()
-    return set(data_list)
-
-def mainSchedule():
-
-    data_list = getExistedData()
-    connect = sqlalchemy.create_engine('mysql+pymysql://'
-                                       'root:1403@127.0.0.1:3306/'
-                                       'tweet', encoding='utf8')
-
-    topic_list = ['Trump', 'China', 'HongKong', 'COVID', 'Finance','Computer Science', 'Amazon',
-                  'Software Engineering', 'Machine Learning']
-    for topic in topic_list:
-        main(connect, data_list, topic=topic, total_num=20, result_type='popular',
-             language='en', keywords_num=2, abstract_num=1)
-
-    print('------------------ Scanning is done, end time: {} ---------------------'.format(time.asctime(time.localtime(time.time()))))
-
-if __name__ == "__main__":
-
-    run_schedule = False
-
-    if run_schedule:
-        schedule.every(15).minutes.do(mainSchedule)
-        #schedule.every().hour.do(mainSchedule)
-        while True:
-            schedule.run_pending()
-            time.sleep(1)
-    else:
-        mainSchedule()
 

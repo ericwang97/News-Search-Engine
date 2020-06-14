@@ -20,6 +20,9 @@ class INF551DatabaseSearchEngine extends React.Component{
                 <Switch>
                     <Route exact path="/" component = {Home}/>
                     <Route path="/search" component = {App}/>
+
+                    <Route path="/customers_order-offices" component = {QueryTable}/>
+
                     <Route path="/world-city" component = {QueryTable}/>
                     <Route path="/world-country" component = {QueryTable}/>
                     <Route path="/world-countrylanguage" component = {QueryTable}/>
