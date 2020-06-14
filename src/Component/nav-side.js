@@ -19,6 +19,19 @@ class NavSide extends React.Component{
                             </NavLink>
                         </li>
                         <li className="active">
+                            <Link to="/news-tweet">
+                                <i className="fa fa-sitemap" data-toggle="collapse"/>
+                                <span>News</span>
+                                <span className="fa arrow"/>
+                            </Link>
+
+                            <ul className="nav nav-second-level collapse in">
+                                <li>
+                                    <NavLink to="/news-tweet" activeClassName="active-menu" >tweet</NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className="active">
                             <Link to="/world-city">
                                 <i className="fa fa-sitemap" data-toggle="collapse"/>
                                 <span>world</span>

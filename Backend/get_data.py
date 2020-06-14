@@ -10,7 +10,7 @@ from twitter import getTweet
 
 def writeSQL(dataDF, table):
     connect = sqlalchemy.create_engine('mysql+pymysql://'
-                                       'root:1403@127.0.0.1:3306/'
+                                       'inf551:inf551@127.0.0.1:3306/'
                                        'news', encoding='utf8')
 
     dataDF.to_sql(name=table, con=connect, if_exists='append', index=False,
@@ -80,7 +80,7 @@ if __name__ == "__main__":
 
     if run_schedule:
         schedule.every(0.5).minutes.do(main)
-        # schedule.every().hour.do(mainSchedule)
+        #schedule.every().hour.do(main)
         while True:
             schedule.run_pending()
             time.sleep(1)

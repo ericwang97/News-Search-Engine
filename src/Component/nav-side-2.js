@@ -23,14 +23,23 @@ class NavSide extends React.Component{
                                 mode="inline"
                                 className="site-layout-background"
                                 defaultSelectedKeys={['search']}
-                                defaultOpenKeys={['world']}
+                                defaultOpenKeys={['news']}
                                 theme="dark"
-                                style={{ height: '150%', borderRight: 0 }}
+                                style={{ height: '133%', borderRight: 0 }}
                             >
                                 <Menu.Item key="search">
                                     <PieChartOutlined />
                                     <Link to='/search'><b>Search</b></Link>
                                 </Menu.Item>
+                                <SubMenu
+                                    key="news"
+                                    title={<span>
+                                                <UserOutlined />
+                                                News
+                                              </span>
+                                    }>
+                                    <Menu.Item key="28"><Link to='/news-tweet'>Tweet</Link ></Menu.Item>
+                                </SubMenu>
                                 <SubMenu
                                     key="world"
                                     title={<span>

@@ -240,7 +240,7 @@ class App extends React.Component {
                 </Select>
             );
         }
-        else if (this.state.database === "tweet") {
+        else if (this.state.database === "news") {
             selectTable.push(
                 <Select
                     name="table"
@@ -337,9 +337,10 @@ class App extends React.Component {
                             placeholder="Select a person"
                             onChange={this.handleDatabaseChange}
                             value={this.state.database}>
-                            <Option value="world">world</Option>
-                            <Option value="sakila">film dataset</Option>
-                            <Option value="customers_order">customers order</Option>
+                            <Option value="news">News</Option>
+                            <Option value="world">World</Option>
+                            <Option value="sakila">Film Dataset</Option>
+                            <Option value="customers_order">Customers Order</Option>
                         </Select >
                     </label>
 
