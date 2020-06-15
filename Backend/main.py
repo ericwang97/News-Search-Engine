@@ -2,6 +2,7 @@ import mysql.connector
 import sys
 import requests
 import json
+import time
 
 from search import GetSearchList, MainSearch
 from load import MainLoad
@@ -159,8 +160,9 @@ def Rate(rate, comment):
             data = {'rate': rate, 'comment': comment}
             requests.request('POST', firebaseURL, json=data)
 
+            current_time = time.asctime(time.localtime(time.time()))
             cursor = connect.cursor()
-            cursor.execute("insert into rating.rating(Rating, Comment) values('{}','{}')".format(rate, comment))
+            cursor.execute("insert into rating.rating(Rating, Comment, Created_time) values('{}','{}')".format(rate, comment, current_time))
             connect.commit()
             cursor.close()
 

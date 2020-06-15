@@ -91,7 +91,7 @@ def searchTweet(data_list, topic, total_num, page_length, result_type, language,
                     if item['entities']['hashtags']:
                         raw_keywords = ' '.join([each['text'] for each in item['entities']['hashtags']])
                     else:
-                        raw_keywords = text_keyword_abstract(text, keywords_num, abstract_num)
+                        raw_keywords = '' #text_keyword_abstract(text, keywords_num, abstract_num)
                     data.update({i: [name, time, favorite, raw_keywords, url, text]})
 
             elif 'message' in item:
