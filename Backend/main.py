@@ -162,7 +162,7 @@ def Rate(rate, comment):
 
             current_time = time.asctime(time.localtime(time.time()))
             cursor = connect.cursor()
-            cursor.execute("insert into rating.rating(Rating, Comment, Created_time) values('{}','{}')".format(rate, comment, current_time))
+            cursor.execute("insert into rating.rating(Rating, Comment, Created_time) values('{}','{}','{}')".format(rate, comment, current_time))
             connect.commit()
             cursor.close()
 
