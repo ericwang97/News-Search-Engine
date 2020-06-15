@@ -137,7 +137,6 @@ def QueryExecution(databaseName, tableList, value=None):
 
 
 def Rate(rate, comment):
-    firebaseURL = 'https://inf551-a79f9.firebaseio.com/Rating.json'
 
     try:
         connect = mysql.connector.connect(
@@ -157,8 +156,6 @@ def Rate(rate, comment):
             return json.dumps({'status': 1, 'msg': 'Sorry, please rate it before sending'}, indent=4)
 
         else:
-            data = {'rate': rate, 'comment': comment}
-            requests.request('POST', firebaseURL, json=data)
 
             current_time = time.asctime(time.localtime(time.time()))
             cursor = connect.cursor()
