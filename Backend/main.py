@@ -107,6 +107,12 @@ def QueryExecution(databaseName, tableList, value=None):
     # if requests.get(firebaseURL + databaseName + '.json').status_code != 200:
     #    print("Connection Failed. Please connect your Firebase first!")
 
+    if databaseName == 'rating':
+        requests.request('PUT', firebaseURL + 'rating.json', json={})
+        requests.request('PUT', firebaseURL + 'ratingAllDataNode.json', json={})
+        requests.request('PUT', firebaseURL + 'ratingNode.json', json={})
+        MainLoad(firebaseURL, connect, Mute, [databaseName])
+
     if tableList == '':
         return CheckStatus('query all table')
 

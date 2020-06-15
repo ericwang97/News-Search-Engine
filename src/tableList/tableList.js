@@ -11,6 +11,17 @@ class TableList extends React.Component {
 
         this.state = {
 
+            rating_rating : [
+                {
+                    title: 'Rating',
+                    dataIndex: 'Rating'
+                },
+                {
+                    title: 'Comment',
+                    dataIndex: 'Comment'
+                }
+            ],
+
             news_tweet : [
                 {
                     title: 'Topic',

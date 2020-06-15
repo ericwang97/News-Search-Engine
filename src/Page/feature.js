@@ -10,41 +10,37 @@ class Feature extends React.Component{
     render(){
         return(
             <div id="page-wrapper">
-                <PageTitle title="Feature Description"/>
+                <PageTitle title="Description of Features"/>
                 <div className="row">
                     <Card title="1. Search Engine" >
                         <div className="col-md-12">
-                            <h5>Search Engine is based on...</h5>
-                            <div>Phrase frequency, etc. </div>
+                            <h5>Search Engine is based on <b>inverted index and word frequency</b>, you could input whatever sentences or phrase you like. </h5>
                             <div>&nbsp;&nbsp;</div>
                         </div>
                     </Card>
                     <div>&nbsp;&nbsp;</div>
-                    <div>&nbsp;&nbsp;</div>
-                    <Card title="2. New's crawler" >
+                    <Card title="2. New's Crawler" >
                         <div className="col-md-12">
-                            <h5>New's crawler is based on...</h5>
-                            <div>Daily crawler</div>
-                            <div>后端爬到数据，做个search engine放前端展示，前端如果需要更多额外的topic的话，返回后端继续爬新的数据，越来越增大数据库</div>
+                            <h5>1. Enable to run daily news crawler by using <b>scheduler</b></h5>
+                            <h5>2. Use <b>Run Crawler</b> Page to select your <b>personal interested topic and websites</b>. Try getting your own news!</h5>
                             <div>&nbsp;&nbsp;</div>
                         </div>
                     </Card>
                     <div>&nbsp;&nbsp;</div>
-                    <div>&nbsp;&nbsp;</div>
-                    <Card title="3. NLP Processing and Analysis, and Recommendation" >
+                    <Card title="3. NLP Processing, Analysis, and Recommendation" >
                         <div className="col-md-12">
-                            <h5>NLP Processing and Analysis is based on...</h5>
-                            <div>后期加上点赞，除了search engine再加点NLP的内容，比如可以做根据点赞的文本算文本相似度之类做个非常简单的推荐。</div>
-                            <div>加入近义词自动识别</div>
+                            <h5>1. Do you like this news? Select which one you like, click them and help me to find and <b>recommend</b> the better news on next crawler!!</h5>
+                            <h5>2. Don't satisfied with the search results? Try using <b>Stop Words filtering</b>, <b>Synonym filtering</b> to improve the results!</h5>
+                            <h5>3. Try using <b>Text-Rank</b> to generate the keywords and abstracts for crawled articles!</h5>
+                            <h5>4. Try implementing <b>Word Cloud</b></h5>
                             <div>&nbsp;&nbsp;</div>
                         </div>
                     </Card>
-                    <div>&nbsp;&nbsp;</div>
                     <div>&nbsp;&nbsp;</div>
                     <Card title="4. Database Presentation" >
                         <div className="col-md-12">
-                            <h5>Database Presentation is based on...</h5>
-                            <div>Used World, Film, Customers Orders database as the examples to show the presentation of database, including their FK relationships. </div>
+                            <h5>Used three databases: World, Film, Customers_Orders as the examples to show the presentation of database, and allow the users to <b>navigate the FK relationships</b> of tables. </h5>
+                            <h5>You can click the DB example and select the table to take a look at the data</h5>
                             <div>&nbsp;&nbsp;</div>
                         </div>
                     </Card>

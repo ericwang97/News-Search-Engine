@@ -15,6 +15,17 @@ class QueryTable extends React.Component{
             searchwords:"",
             queryData: [],
 
+            rating_rating : [
+                {
+                    title: 'Rating',
+                    dataIndex: 'Rating'
+                },
+                {
+                    title: 'Comment',
+                    dataIndex: 'Comment'
+                }
+            ],
+
             news_tweet : [
                 {
                     title: 'Topic',

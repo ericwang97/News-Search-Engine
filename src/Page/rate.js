@@ -3,7 +3,8 @@ import PageTitle from '../Component/page-title.js';
 import './home.css'
 import { Card, Input, Rate,Button } from "antd";
 import 'antd/es/rate/style/css';
-import axios from "axios"; // 加载 CSS
+import axios from "axios";
+import TableList from "../tableList/tableList"; // 加载 CSS
 const { Search } = Input;
 
 
@@ -58,11 +59,11 @@ class myRate extends React.Component{
     }
 
     handleRateChange(value) {
-        this.setState({rate: value});
+        this.setState({rate: value, loading: true});
     }
     handleCommentChange(event) {
         //console.log(value)
-        this.setState({comment: event.target.value});
+        this.setState({comment: event.target.value, loading: true});
     }
 
     render(){

@@ -4,17 +4,17 @@ import './home.css'
 import { Card } from "antd";
 import 'antd/es/card/style/css'; // 加载 CSS
 
-class NLP extends React.Component{
+class Recommendation extends React.Component{
 
 
     render(){
         return(
             <div id="page-wrapper">
-                <PageTitle title="NLP Analysis"/>
+                <PageTitle title="Personalize your news!"/>
                 <div className="row">
-                    <Card title="Some notes" >
+                    <Card title="Personalize your news and get the Recommendation!" >
                         <div className="col-md-12">
-                            <h5>Trying to do something about NLP!</h5>
+                            <h5>Personalize your news and get the Recommendation!</h5>
                             <div>Try to favorite something, and I will update the database and send more accurate news results for you.</div>
                         </div>
                     </Card>
@@ -27,4 +27,4 @@ class NLP extends React.Component{
     }
 }
 
-export default NLP;
+export default Recommendation;

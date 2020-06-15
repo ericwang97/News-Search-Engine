@@ -33,12 +33,18 @@ class NavSide extends React.Component{
                                 </Menu.Item>
                                 <Menu.Item key="crawler">
                                     <PieChartOutlined />
-                                    <Link to='/crawler'><b>Run Crawler</b></Link>
+                                    <Link to='/crawler'><b>Run Crawler (TBD)</b></Link>
                                 </Menu.Item>
-                                <Menu.Item key="NLP">
+                                <Menu.Item key="recommendation">
                                     <PieChartOutlined />
-                                    <Link to='/NLP'><b>NLP Analysis</b></Link>
+                                    <Link to='/recommendation'><b>Personalize News (TBD)</b></Link>
                                 </Menu.Item>
+                                <Menu.Item key="word-cloud">
+                                    <PieChartOutlined />
+                                    <Link to='/word-cloud'><b>Word Cloud (TBD)</b></Link>
+                                </Menu.Item>
+
+
                                 <SubMenu
                                     key="news"
                                     title={<span>

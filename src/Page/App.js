@@ -160,11 +160,11 @@ class App extends React.Component {
     }
 
     handleSearchNewsChange(value) {
-        this.setState({searchNews: value,loading:true, database: null});
+        this.setState({searchNews: value,loading:true, database: null, table: null});
     }
 
     handleDatabaseChange(value) {
-        this.setState({database: value,loading:true});
+        this.setState({database: value,loading:true, table: null});
     }
 
     handleTableChange(value) {
@@ -226,6 +226,7 @@ class App extends React.Component {
                     onChange={this.handleTableChange}
                     value={this.state.table}>
                     <Option value="tweet">Tweet</Option>
+                    <Option value="tweet">Financial Times (TBD)</Option>
                     <Option value="">All tables</Option>
                 </Select>
             );

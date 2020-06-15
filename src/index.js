@@ -7,9 +7,12 @@ import Layout from './Component/layout.js';
 import Home from './Page/home.js';
 import App from './Page/App.js';
 import QueryTable from './Page/queryTable.js';
-import myRate from './Page/rate.js';
-import NLP from './Page/NLP.js';
+
+import Recommendation from './Page/recommendation.js';
 import Crawler from './Page/crawler.js';
+import WordCloud from './Page/wordCloud.js';
+
+import myRate from './Page/rate.js';
 import Feature from './Page/feature.js';
 import ErrorPage from './Page/error.js';
 import * as serviceWorker from './serviceWorker';
@@ -23,8 +26,13 @@ class INF551DatabaseSearchEngine extends React.Component{
                 <Switch>
                     <Route exact path="/" component = {Home}/>
                     <Route path="/search" component = {App}/>
-                    <Route path="/NLP" component = {NLP}/>
+                    <Route path="/recommendation" component = {Recommendation}/>
                     <Route path="/crawler" component = {Crawler}/>
+                    <Route path="/word-cloud" component = {WordCloud}/>
+
+                    <Route path="/rate" component = {myRate}/>
+                    <Route path="/rating-rating" component = {QueryTable}/>
+                    <Route path="/features" component = {Feature}/>
 
                     <Route path="/news-tweet" component = {QueryTable}/>
 
@@ -58,8 +66,6 @@ class INF551DatabaseSearchEngine extends React.Component{
                     <Route path="/customers_order-employees" component = {QueryTable}/>
                     <Route path="/customers_order-offices" component = {QueryTable}/>
 
-                    <Route path="/rate" component = {myRate}/>
-                    <Route path="/Features" component = {Feature}/>
                     <Route component = {ErrorPage}/>
                 </Switch>
             </Layout>
