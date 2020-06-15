@@ -8,6 +8,9 @@ import Home from './Page/home.js';
 import App from './Page/App.js';
 import QueryTable from './Page/queryTable.js';
 import myRate from './Page/rate.js';
+import NLP from './Page/NLP.js';
+import Crawler from './Page/crawler.js';
+import Feature from './Page/feature.js';
 import ErrorPage from './Page/error.js';
 import * as serviceWorker from './serviceWorker';
 
@@ -20,6 +23,8 @@ class INF551DatabaseSearchEngine extends React.Component{
                 <Switch>
                     <Route exact path="/" component = {Home}/>
                     <Route path="/search" component = {App}/>
+                    <Route path="/NLP" component = {NLP}/>
+                    <Route path="/crawler" component = {Crawler}/>
 
                     <Route path="/news-tweet" component = {QueryTable}/>
 
@@ -54,6 +59,7 @@ class INF551DatabaseSearchEngine extends React.Component{
                     <Route path="/customers_order-offices" component = {QueryTable}/>
 
                     <Route path="/rate" component = {myRate}/>
+                    <Route path="/Features" component = {Feature}/>
                     <Route component = {ErrorPage}/>
                 </Switch>
             </Layout>

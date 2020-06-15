@@ -10,7 +10,7 @@ class Home extends React.Component{
     render(){
         return(
             <div id="page-wrapper">
-                <PageTitle title="INF551 Database Search Engine"/>
+                <PageTitle title="New's Data Integration System"/>
                 <div className="row">
                     <Card title="Some notes" >
                     <div className="col-md-12">

@@ -58,7 +58,7 @@ def main():
     topic_list = ['Trump', 'China', 'HongKong', 'COVID', 'Finance', 'Computer Science', 'Amazon',
                   'Software Engineering', 'Machine Learning']
 
-    print('------------------ Start Scanning, end time: {} ---------------------'.format(
+    print('------------------ Start Scanning, start time: {} ---------------------'.format(
         time.asctime(time.localtime(time.time()))))
 
     print('------- Start getting tweets -------')

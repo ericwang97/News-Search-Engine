@@ -15,6 +15,38 @@ class QueryTable extends React.Component{
             searchwords:"",
             queryData: [],
 
+            news_tweet : [
+                {
+                    title: 'Topic',
+                    dataIndex: 'topic'
+                },
+                {
+                    title: 'UserName',
+                    dataIndex: 'user_name'
+                },
+                {
+                    title: 'Time',
+                    dataIndex: 'created_time'
+                },
+                {
+                    title: 'Favorite',
+                    dataIndex: 'favorite_count',
+
+                },
+                {
+                    title: 'Keywords',
+                    dataIndex: 'keywords'
+                },
+                {
+                    title: 'URL',
+                    dataIndex: 'url'
+                },
+                {
+                    title: 'Tweet',
+                    dataIndex: 'text'
+                }
+            ],
+
             world_city : [
                 {
                     title: 'ID',
@@ -950,7 +982,7 @@ class QueryTable extends React.Component{
         axios.get(url)
             .then(function (response) {
                 let status = response.data.status;
-
+                console.log(response.data)
                 if (status === 0) {
                     let data = response.data.data;
                     currentComponent.setState({queryData:data,loading:false})

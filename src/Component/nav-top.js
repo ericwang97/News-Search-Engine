@@ -14,12 +14,15 @@ class NavTop extends React.Component{
         return(
             <div className="navbar navbar-default top-navbar">
                 <div className="navbar-header">
-                    <Link className="navbar-brand" to="/"><b>INF</b>551</Link>
+                    <Link className="navbar-brand" to="/"><b>My</b>News</Link>
                 </div>
 
                 <ul className="nav navbar-top-links navbar-left">
                     <li className="nav-item">
                         <Link className="top-navbar active"to="/"><b>Home</b></Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="top-navbar" to="/Features"><b>Features Description</b></Link>
                     </li>
                     <li className="nav-item">
                         <Link className="top-navbar" to="/rate"><b>Rate it</b></Link>

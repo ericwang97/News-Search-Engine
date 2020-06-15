@@ -27,6 +27,7 @@ class App extends React.Component {
             database: null,
             table: "",
             searchwords: null,
+            searchNews: null,
             loading: true,
             queryData: null,
             queryDataKey: null,
@@ -38,6 +39,7 @@ class App extends React.Component {
         this.handleDatabaseChange = this.handleDatabaseChange.bind(this);
         this.handleTableChange = this.handleTableChange.bind(this);
         this.handleSearchwordsChange = this.handleSearchwordsChange.bind(this);
+        this.handleSearchNewsChange = this.handleSearchNewsChange.bind(this);
         this.handleResetClick = this.handleResetClick.bind(this);
         this.handleGoBackClick = this.handleGoBackClick.bind(this);
         this.handleHyperLinkClick = this.handleHyperLinkClick.bind(this);
@@ -157,6 +159,10 @@ class App extends React.Component {
             this.handleSearchClick);
     }
 
+    handleSearchNewsChange(value) {
+        this.setState({searchNews: value,loading:true, database: null});
+    }
+
     handleDatabaseChange(value) {
         this.setState({database: value,loading:true});
     }
@@ -171,10 +177,57 @@ class App extends React.Component {
 
     render() {
 
+        let selectDatabase = [];
+        if (this.state.searchNews === null) {
+            selectDatabase.push(
+                <Select/>
+            );
+        }
+        else if (this.state.searchNews === 'news') {
+            this.state.database = 'news'
+            selectDatabase.push(
+                <Select/>
+                // <Select
+                //     style={{ width: 160 }}
+                //     placeholder="Select a person"
+                //     onChange={this.handleDatabaseChange}
+                //     value={this.state.database}>
+                //     <Option value="news">News</Option>
+                // </Select >
+            );
+        }
+        else {
+            selectDatabase.push(
+                    <Select
+                        defaultValue="world"
+                        style={{ width: 160 }}
+                        placeholder="Select a person"
+                        onChange={this.handleDatabaseChange}
+                        value={this.state.database}>
+                        <Option value="world">World</Option>
+                        <Option value="sakila">Film Dataset</Option>
+                        <Option value="customers_order">Customers Order</Option>
+                    </Select >
+                );
+            }
+
         let selectTable = [];
         if (this.state.database === null) {
             selectTable.push(
                 <Select/>
+            );
+        }
+        else if (this.state.database === "news") {
+            selectTable.push(
+                <Select
+                    name="table"
+                    defaultValue=""
+                    style={{ width: 160 }}
+                    onChange={this.handleTableChange}
+                    value={this.state.table}>
+                    <Option value="tweet">Tweet</Option>
+                    <Option value="">All tables</Option>
+                </Select>
             );
         }
         else if (this.state.database === "world") {
@@ -240,19 +293,7 @@ class App extends React.Component {
                 </Select>
             );
         }
-        else if (this.state.database === "news") {
-            selectTable.push(
-                <Select
-                    name="table"
-                    defaultValue=""
-                    style={{ width: 160 }}
-                    onChange={this.handleTableChange}
-                    value={this.state.table}>
-                    <Option value="raw_news">Tweet</Option>
-                    <Option value="">All tables</Option>
-                </Select>
-            );
-        }
+
 
         let returnResult = [];
         if (this.state.loading === true) {
@@ -329,19 +370,23 @@ class App extends React.Component {
                 </div>
                 <div className="App-search">
 
-                    <label htmlFor="database">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Database: &nbsp;&nbsp;
+                    <label htmlFor="ifNews">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search News? &nbsp;&nbsp;
                         <Select
-                            defaultValue="world"
+                            defaultValue="news"
                             style={{ width: 160 }}
                             placeholder="Select a person"
-                            onChange={this.handleDatabaseChange}
-                            value={this.state.database}>
-                            <Option value="news">News</Option>
-                            <Option value="world">World</Option>
-                            <Option value="sakila">Film Dataset</Option>
-                            <Option value="customers_order">Customers Order</Option>
+                            onChange={this.handleSearchNewsChange}
+                            value={this.state.searchNews}>
+                            <Option value="news">Yes, search news</Option>
+                            <Option value="database">No, search database</Option>
+
                         </Select >
+                    </label>
+
+                    <label htmlFor="database">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Database: &nbsp;&nbsp;
+                        {selectDatabase}
                     </label>
 
                     <label htmlFor="table">
@@ -353,15 +398,13 @@ class App extends React.Component {
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <Input
                             id="searchwords"
-                            style={{ width: 400 }}
-                            placeholder="Search words or sentence, whatever you like"
+                            style={{ width: 300 }}
+                            placeholder="Search words or a whole sentence"
                             onChange={this.handleSearchwordsChange}
                             value={this.state.searchwords}
                         />
                     </label>
 
-                    {/*<span>Database: {this.state.database}</span>*/}
-                    {/*<span>Table: {this.state.table}</span>*/}
 
                 </div>
                 <div className="App-header">
@@ -369,6 +412,7 @@ class App extends React.Component {
                     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 
                     <Button onClick={(e) => this.handleGoBackClick()}
                     >Go Back</Button>

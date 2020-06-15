@@ -10,6 +10,43 @@ class TableList extends React.Component {
         super(props);
 
         this.state = {
+
+            news_tweet : [
+                {
+                    title: 'Topic',
+                    dataIndex: 'topic'
+                },
+                {
+                    title: 'UserName',
+                    dataIndex: 'user_name'
+                },
+                {
+                    title: 'Time',
+                    dataIndex: 'created_time'
+                },
+                {
+                    title: 'Favorite',
+                    dataIndex: 'favorite_count',
+
+                },
+                {
+                    title: 'Keywords',
+                    dataIndex: 'keywords'
+                },
+                {
+                    title: 'URL',
+                    dataIndex: 'url',
+                    render: text => {
+                        return (<a href={text}
+                        >{text}
+                        </a>)
+                }},
+                {
+                    title: 'Tweet',
+                    dataIndex: 'text'
+                }
+            ],
+
             world_city : [
                 {
                     title: 'ID',

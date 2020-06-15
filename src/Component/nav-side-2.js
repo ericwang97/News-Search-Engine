@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Link, NavLink} from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Layout, Menu, Breadcrumb } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined,PieChartOutlined } from '@ant-design/icons';
+import { UserOutlined, LaptopOutlined, NotificationOutlined,ContainerOutlined, PieChartOutlined } from '@ant-design/icons';
 import './nav-side-2.css';
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -31,11 +31,19 @@ class NavSide extends React.Component{
                                     <PieChartOutlined />
                                     <Link to='/search'><b>Search</b></Link>
                                 </Menu.Item>
+                                <Menu.Item key="crawler">
+                                    <PieChartOutlined />
+                                    <Link to='/crawler'><b>Run Crawler</b></Link>
+                                </Menu.Item>
+                                <Menu.Item key="NLP">
+                                    <PieChartOutlined />
+                                    <Link to='/NLP'><b>NLP Analysis</b></Link>
+                                </Menu.Item>
                                 <SubMenu
                                     key="news"
                                     title={<span>
-                                                <UserOutlined />
-                                                News
+                                                <ContainerOutlined />
+                                                <b>News</b>
                                               </span>
                                     }>
                                     <Menu.Item key="28"><Link to='/news-tweet'>Tweet</Link ></Menu.Item>
@@ -44,7 +52,7 @@ class NavSide extends React.Component{
                                     key="world"
                                     title={<span>
                                                 <UserOutlined />
-                                                World
+                                                DB example: World
                                               </span>
                                     }>
                                     <Menu.Item key="1"><Link to='/world-city'>City</Link ></Menu.Item>
@@ -56,7 +64,7 @@ class NavSide extends React.Component{
                                     title={
                                         <span>
                                             <LaptopOutlined />
-                                            Film
+                                            DB example: Film
                                           </span>
                                     }>
                                     <Menu.Item key="4"><Link to='/sakila-film'>Film</Link ></Menu.Item>
@@ -84,7 +92,7 @@ class NavSide extends React.Component{
                                     title={
                                         <span>
                                             <NotificationOutlined />
-                                            Customers order
+                                            DB example: Customers Order
                                           </span>
                                     }>
                                     <Menu.Item key="20"><Link to='/customers_order-products'>Products</Link ></Menu.Item>
