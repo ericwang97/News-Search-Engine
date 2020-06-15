@@ -19,6 +19,10 @@ class TableList extends React.Component {
                 {
                     title: 'Comment',
                     dataIndex: 'Comment'
+                },
+                {
+                    title: 'Created Time',
+                    dataIndex: 'Created_time'
                 }
             ],
 
