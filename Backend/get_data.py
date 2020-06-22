@@ -66,7 +66,7 @@ def main():
         dataDF = getTweet(data_list, topic=topic, total_num=10, result_type='popular',
                       language='en', keywords_num=2, abstract_num=1)
         writeSQL(dataDF, table='tweet')
-
+    time.sleep(1)
     MainLoad(firebaseURL, connect, Mute=True, databaseNameList=['news'])
 
     print('------------------ Scanning is done, end time: {} ---------------------'.format(
